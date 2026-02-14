@@ -1,6 +1,6 @@
 ---
 name: swift-house-style
-description: Enforce Swift coding best practices: clarity, safety, modern Swift 5.9+ conventions, and production-readiness.
+description: Expert guidance for Swift code quality and refactoring. Use when developers ask for Swift best-practice reviews, style cleanup, readability improvements, API design feedback, optional/error-handling guidance, performance-minded refactors, or production-readiness checks.
 tags: [swift, style, best-practices, refactor, review]
 ---
 

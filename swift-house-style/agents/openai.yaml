@@ -1,0 +1,9 @@
+interface:
+  display_name: "Swift House Style"
+  short_description: "Enforce Swift best practices for review and refactoring"
+  icon_small: "./assets/swift-house-style-small.svg"
+  icon_large: "./assets/swift-house-style.png"
+  default_prompt: "Use $swift-house-style to review this Swift code for correctness, concurrency, style, and performance."
+
+policy:
+  allow_implicit_invocation: true
