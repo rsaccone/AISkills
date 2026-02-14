@@ -2,7 +2,7 @@
 description: Production-grade best practices for ActivityKit and Live
   Activities including architecture, token lifecycle, updates,
   concurrency, UI, and testing.
-name: live-activities
+name: ios-live-activities
 tags:
 - swift
 - activitykit
