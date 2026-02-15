@@ -1,6 +1,6 @@
 ---
 name: swiftui-best-practices
-description: Apply SwiftUI best practices: predictable state, small views, testable logic, and correct navigation patterns.
+description: "Apply SwiftUI best practices: predictable state, small views, testable logic, and correct navigation patterns."
 tags: [swiftui, mvvm, architecture, ui, refactor]
 ---
 
