@@ -14,10 +14,19 @@ Follow these rules when authoring SwiftUI. Prefer modern patterns unless constra
 - Prefer one clear source of truth; avoid duplicating state (e.g., `@State` mirroring model fields) unless it’s an intentional edit buffer.
 - Avoid passing bindings deep through many layers; consider a small view model, environment objects, or feature state.
 
+## Alerts and presentation state
+- Model multiple mutually-exclusive alerts with a single enum-backed state, not a growing set of `show...Alert` booleans.
+- Use associated values to carry item-specific context for the alert.
+- Prefer one derived alert/template surface per feature instead of many alert-template properties.
+- Prefer one `.alert(...)` modifier per feature/view model when alerts are mutually exclusive.
+- Repeated booleans for alerts or confirmation dialogs are usually a sign that the presentation state should be refactored into an enum.
+- If an alert needs dependencies only available in the view layer, keep the alert state in the view model and pass the dependency into a single alert-builder method or expose a compact action model for the view to adapt once.
+
 ## View composition
 - If a `body` grows large, extract subviews:
-  - Use a **private nested View struct** for substantial UI chunks.
   - Use a **computed var** only for small, local snippets (roughly < 15 lines).
+  - Use **ViewBuilder** tagged helper methods if data needs to be supplied to create the subview
+  - Use a **private nested View struct** for substantial UI chunks.
 - Keep modifiers close to the view they affect; avoid huge modifier chains by extracting view builders.
 
 ## Identity & lists
