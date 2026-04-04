@@ -14,6 +14,8 @@ When writing or editing Swift, follow these rules unless the user explicitly req
 - Make illegal states unrepresentable: use **enums**, **value types**, and **non-optional** properties where possible.
 - Prefer **immutability**: `let` first; mutate in tight scopes only.
 - Favor **composition** over inheritance.
+- Avoid deprecated platform APIs when a supported modern replacement exists for the project’s deployment targets.
+- Prefer updating call sites to the current API shape during touched work rather than introducing new usages of deprecated APIs.
 
 ## Naming & API design
 - Use Swift API Design Guidelines: names should form **grammatical phrases** at call sites.

@@ -28,6 +28,8 @@ Follow these rules when authoring SwiftUI. Prefer modern patterns unless constra
   - Use **ViewBuilder** tagged helper methods if data needs to be supplied to create the subview
   - Use a **private nested View struct** for substantial UI chunks.
 - Keep modifiers close to the view they affect; avoid huge modifier chains by extracting view builders.
+- Avoid deprecated SwiftUI APIs when a supported replacement exists for the project’s deployment targets.
+- When replacing deprecated SwiftUI APIs, preserve existing behavior unless the task explicitly calls for a behavioral change.
 
 ## Identity & lists
 - Use stable identity in lists: `ForEach(items, id: \.id)` or `Identifiable`.
