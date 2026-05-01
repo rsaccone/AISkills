@@ -44,6 +44,9 @@ When writing or editing Swift, follow these rules unless the user explicitly req
 - Use classes for shared mutable identity or when required by frameworks.
 - If using classes, document ownership and mutation expectations.
 
+## Concurrency Style
+- Prefer Swift concurrency APIs over DispatchQueue. For main-thread hops, use `await MainActor.run { ... }` or `Task { @MainActor in ... }` instead of `DispatchQueue.main.async`, unless you are bridging a legacy API that specifically requires GCD.
+
 ## Performance & memory
 - Avoid unnecessary allocations in hot paths; otherwise, write clear code first.
 - Use `lazy` only when it measurably helps or prevents expensive work.
