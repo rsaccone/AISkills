@@ -8,6 +8,15 @@ tags: [swiftui, mvvm, architecture, ui, refactor]
 
 Follow these rules when authoring SwiftUI. Prefer modern patterns unless constrained by OS targets.
 
+## View File Organization
+- Keep feature-level SwiftUI views in their own source files.
+- Do not define feature screens, sheets, or reusable subviews inside an unrelated parent view file.
+- Small private helper views may stay in the parent view file only when they are tightly coupled to that parent and not useful elsewhere.
+- View models should not be declared in SwiftUI view files. Put them in separate files under the feature’s `ViewModels` folder.
+- Prefer feature folders that group related SwiftUI files together, for example:
+  - `Timeline/Settings/Views/SettingsView.swift`
+  - `Timeline/Settings/ViewModels/SettingsViewModel.swift`
+
 ## State & data flow
 - Keep SwiftUI views **stateless where possible**.
 - Put business logic in a ViewModel or model layer; views bind to **simple state**.

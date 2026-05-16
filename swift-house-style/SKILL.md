@@ -57,6 +57,14 @@ When writing or editing Swift, follow these rules unless the user explicitly req
 - Use doc comments for public APIs and non-obvious behavior.
 - Keep TODOs actionable and owned (include context, not just “fix later”).
 
+## File Organization
+- Keep one primary view model type per source file.
+- Do not define a view model inside a view file or inside another view model file.
+- Keep SwiftUI views in their own files unless the nested view is private, tiny, and only meaningful as an implementation detail of the parent view.
+- Feature-level views and view models should live under that feature’s folder, for example:
+  - `Timeline/Settings/Views/SettingsView.swift`
+  - `Timeline/Settings/ViewModels/SettingsViewModel.swift`
+
 ## Review checklist output
 When asked to review/refactor Swift code, produce:
 1) Issues found (grouped: correctness, concurrency, style, performance)
