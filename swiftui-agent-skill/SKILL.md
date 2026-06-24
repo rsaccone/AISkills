@@ -23,6 +23,36 @@ Follow these rules when authoring SwiftUI. Prefer modern patterns unless constra
 - Prefer one clear source of truth; avoid duplicating state (e.g., `@State` mirroring model fields) unless it’s an intentional edit buffer.
 - Avoid passing bindings deep through many layers; consider a small view model, environment objects, or feature state.
 
+## Observation bindings
+
+- For `@Observable` reference models owned by a view with `@State`, use a local `@Bindable` wrapper inside `body` when passing bindings to SwiftUI controls or presentation modifiers:
+
+  ```swift
+  var body: some View {
+      @Bindable var viewModel = viewModel
+
+      content
+          .sheet(isPresented: $viewModel.isPresented) {
+              SheetView()
+          }
+  }
+  ```
+
+- Prefer `@Bindable` over manual `Binding(get:set:)` when the binding maps directly to a mutable view-model property.
+
+- Use manual `Binding(get:set:)` only when setting the value must invoke custom logic that cannot be represented by a property setter.
+
+- If a computed view-model property needs binding behavior, make it settable and route the setter through the existing intent method:
+
+  ```swift
+  var isPresented: Bool {
+      get { coordinator.isPresented }
+      set { onPresentationChange(isPresented: newValue) }
+  }
+  ```
+
+- Avoid reintroducing `ObservableObject`, `@Published`, `@StateObject`, or `@ObservedObject` just to recover `$model.property` syntax. Use `@Observable`, `@State`, and `@Bindable` for new SwiftUI code unless maintaining legacy code.
+
 ## Alerts and presentation state
 - Model multiple mutually-exclusive alerts with a single enum-backed state, not a growing set of `show...Alert` booleans.
 - Use associated values to carry item-specific context for the alert.
